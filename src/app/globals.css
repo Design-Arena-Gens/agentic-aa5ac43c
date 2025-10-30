@@ -1,0 +1,98 @@
+@import "tailwindcss";
+
+:root {
+  --background: #f5f2ff;
+  --foreground: #120a31;
+  --card: rgba(255, 255, 255, 0.72);
+  --card-border: rgba(255, 255, 255, 0.2);
+  --primary: #8f53ff;
+  --primary-strong: #b55bff;
+  --accent: #5ef0ff;
+  color-scheme: light;
+}
+
+.dark {
+  --background: #050014;
+  --foreground: #f7f4ff;
+  --card: rgba(8, 6, 30, 0.86);
+  --card-border: rgba(119, 92, 255, 0.4);
+  --primary: #b48dff;
+  --primary-strong: #d6a7ff;
+  --accent: #65fdd9;
+  color-scheme: dark;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  min-height: 100vh;
+  background:
+    radial-gradient(120% 160% at 10% 10%, rgba(160, 64, 255, 0.18), transparent 55%),
+    radial-gradient(140% 165% at 90% 0%, rgba(80, 255, 238, 0.14), transparent 65%),
+    radial-gradient(120% 120% at 50% 120%, rgba(66, 42, 160, 0.6), transparent 80%),
+    var(--background);
+  color: var(--foreground);
+  font-family: var(--font-geist-sans), system-ui, -apple-system, BlinkMacSystemFont,
+    "Segoe UI", sans-serif;
+  margin: 0;
+  position: relative;
+  overflow-x: hidden;
+}
+
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  background:
+    radial-gradient(50% 40% at 80% 20%, rgba(181, 91, 255, 0.18), transparent),
+    radial-gradient(40% 30% at 20% 70%, rgba(101, 253, 217, 0.1), transparent);
+  mix-blend-mode: screen;
+  filter: blur(0px);
+  z-index: -1;
+}
+
+::selection {
+  background: color-mix(in srgb, var(--primary) 75%, transparent);
+  color: var(--foreground);
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.glass-card {
+  background: var(--card);
+  border: 1px solid var(--card-border);
+  box-shadow:
+    0 0 40px rgba(112, 96, 255, 0.05),
+    0 0 120px rgba(112, 96, 255, 0.08);
+  backdrop-filter: blur(24px) saturate(140%);
+}
+
+.dark body {
+  background:
+    radial-gradient(110% 110% at 20% -10%, rgba(138, 68, 255, 0.45), transparent 60%),
+    radial-gradient(120% 110% at 80% 10%, rgba(65, 226, 255, 0.24), transparent 65%),
+    linear-gradient(180deg, #04000f, #050014);
+}
+
+.dark body::before {
+  background:
+    radial-gradient(50% 35% at 20% 15%, rgba(95, 58, 255, 0.32), transparent),
+    radial-gradient(60% 45% at 80% 85%, rgba(120, 255, 219, 0.16), transparent);
+}
